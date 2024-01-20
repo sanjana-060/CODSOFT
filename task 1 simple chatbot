@@ -1,0 +1,45 @@
+#BUILDING A SIMPLE CHATBOT IN AI
+
+def simple_aichatbot(input_values):
+    input_values = input_values.lower()
+    greet = ['hola', 'hi', 'hey', 'greetings','hello']
+    aboutname = ['what is your name', 'who are you','how can I address you']
+    well_being = ['how are you', 'how are you doing','are you alright']
+    help_me=['help me']
+    thanks = ['thanks', 'thankyou']
+    default = "sorry,I'm sorry,I didn't get it, Please ask me something else."
+
+    # for greetings
+    if any(pattern in input_values for pattern in greet):
+        return "Hello! How can I assist you ?"
+
+    #to check about chatbots name
+    elif any(pattern in input_values for pattern in aboutname):
+        return "I'm a simple chatbot."
+
+     # asking about it
+    elif any(pattern in input_values for pattern in well_being):
+        return "I'm a computer program, thanks for asking!"
+        
+    #asking for help
+    elif any(pattern in input_values for pattern in help_me):
+        return "of course!What do you need help with?"
+    
+    # for thanks
+    elif any(pattern in input_values for pattern in thanks):
+        return "You're welcome! If you have more queries,you are free to ask"
+
+    # Default response for if inputs are unrecognized
+    else:
+        return default
+
+print("Chatbot: Hello! How can I assist you ?")
+while True:
+    input_values = input("You: ")
+
+    # Exit the loop if the user enters 'exit'
+    if input_values.lower() == 'exit':
+        print("Chatbot: GoodBye!Have a great day!")
+        break
+    respond = simple_aichatbot(input_values)
+    print("Chatbot:", respond)
