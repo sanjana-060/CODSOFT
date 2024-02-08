@@ -1,0 +1,25 @@
+#Input the sample data
+viewer = {
+    "Sanjana": ["Comedy", "Thriller"],
+    "Aditya": ["Action", "Thriller"],
+    "Cherry": ["Action", "Drama"],
+}
+movies = {
+    "Talladega Nights": "Comedy",
+    "The Family Pan": "Action",
+    "Past Lives": "Drama",
+    "Ambulance": "Thriller",
+}
+def recommend_movies(user, N=2):
+  similar_users = [u for u in viewer if any(genre in viewer[u] for genre in viewer[user])]
+  recommendations = []
+  for other_user in similar_users:
+    for movie in movies.keys():
+      if movie not in viewer[user] and movies[movie] in viewer[other_user]:
+        recommendations.append(movie)
+        if len(recommendations) >= N:
+          return recommendations
+# Example usage
+user = "Sanjana"
+recommendations = recommend_movies(user)
+print(f"Recommended movies for {user}: {recommendations}")
